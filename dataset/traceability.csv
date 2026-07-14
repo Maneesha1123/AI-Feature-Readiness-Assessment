@@ -1,0 +1,6 @@
+feature_id,ac_id,tc_id,status
+F001,AC001,TC001,Linked
+F002,AC002,TC002,Linked
+F003,AC003,TC003,Linked
+F004,AC004,TC004,Broken
+F005,AC005,TC005,Linked

@@ -1,0 +1,6 @@
+tc_id,feature_id,description,result
+TC001,F001,Verify valid login,Pass
+TC002,F002,Verify registration,Pass
+TC003,F003,Verify cart,Pass
+TC004,F004,Verify checkout,Fail
+TC005,F005,Verify tracking,Pass

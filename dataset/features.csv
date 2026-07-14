@@ -1,0 +1,6 @@
+feature_id,feature_name,sprint,product_owner
+F001,User Login,Sprint 1,Alice
+F002,User Registration,Sprint 1,Alice
+F003,Shopping Cart,Sprint 2,Bob
+F004,Checkout,Sprint 2,Bob
+F005,Order Tracking,Sprint 3,Charlie

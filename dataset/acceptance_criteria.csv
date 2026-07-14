@@ -1,0 +1,6 @@
+ac_id,feature_id,description,version
+AC001,F001,Login with valid credentials,1
+AC002,F002,Register new user,1
+AC003,F003,Add products to cart,1
+AC004,F004,Complete checkout,1
+AC005,F005,Track order,1
