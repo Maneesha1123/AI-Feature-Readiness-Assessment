@@ -59,3 +59,16 @@ class RequirementHistory(Base):
     ac_id = Column(String)
     old_text = Column(String)
     new_text = Column(String)
+
+
+class EvaluationDecision(Base):
+    """NEW TABLE - records Accept/Override decisions from evaluation
+    sessions, used for RQ4 data collection (thematic analysis input)."""
+    __tablename__ = "evaluation_decisions"
+
+    id = Column(Integer, primary_key=True, index=True)
+    ac_id = Column(String)
+    tc_id = Column(String)
+    decision = Column(String)       # "accept" or "override"
+    reason = Column(String)
+    participant_id = Column(String)
