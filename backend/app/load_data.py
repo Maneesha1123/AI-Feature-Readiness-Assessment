@@ -8,6 +8,7 @@ from backend.app.models import (
     TestCase,
     Traceability,
     Deployment,
+    RequirementHistory,
 )
 
 # Create all tables if they don't exist
@@ -28,7 +29,7 @@ def load_features(db):
         )
 
     db.commit()
-    print("✅ Features loaded")
+    print("Features loaded")
 
 
 def load_acceptance(db):
@@ -45,7 +46,7 @@ def load_acceptance(db):
         )
 
     db.commit()
-    print("✅ Acceptance Criteria loaded")
+    print("Acceptance Criteria loaded")
 
 
 def load_testcases(db):
@@ -62,7 +63,7 @@ def load_testcases(db):
         )
 
     db.commit()
-    print("✅ Test Cases loaded")
+    print("Test Cases loaded")
 
 
 def load_traceability(db):
@@ -79,7 +80,7 @@ def load_traceability(db):
         )
 
     db.commit()
-    print("✅ Traceability loaded")
+    print("Traceability loaded")
 
 
 def load_deployment(db):
@@ -95,7 +96,24 @@ def load_deployment(db):
         )
 
     db.commit()
-    print("✅ Deployment loaded")
+    print("Deployment loaded")
+
+
+def load_requirement_history(db):
+    df = pd.read_csv("dataset/requirement_history.csv")
+
+    for _, row in df.iterrows():
+        db.add(
+            RequirementHistory(
+                feature_id=row["feature_id"],
+                ac_id=row["ac_id"],
+                old_text=row["old_text"],
+                new_text=row["new_text"],
+            )
+        )
+
+    db.commit()
+    print("Requirement History loaded")
 
 
 def main():
@@ -106,10 +124,11 @@ def main():
     load_testcases(db)
     load_traceability(db)
     load_deployment(db)
+    load_requirement_history(db)
 
     db.close()
 
-    print("\n🎉 All data successfully imported!")
+    print("\nAll data successfully imported!")
 
 
 if __name__ == "__main__":

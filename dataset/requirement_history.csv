@@ -1,0 +1,2 @@
+feature_id,ac_id,old_text,new_text
+F004,AC-004,When no hostname is passed HTTPie should not error out and should attempt a reasonable default connection.,When no hostname is passed HTTPie must default the request to localhost so that commands like http :8080 work correctly.

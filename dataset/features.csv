@@ -1,6 +1,16 @@
 feature_id,feature_name,sprint,product_owner
-F001,User Login,Sprint 1,Alice
-F002,User Registration,Sprint 1,Alice
-F003,Shopping Cart,Sprint 2,Bob
-F004,Checkout,Sprint 2,Bob
-F005,Order Tracking,Sprint 3,Charlie
+F001,unable to CONTRIBUTING,issue-#1571,darkb0ts
+F002,Please add support for Mise,issue-#1563,Blackjacx
+F003,Add shortcut to --verify=no,issue-#1536,franciscobretal
+F004,Default to localhost,issue-#1519,sayanarijit
+F005,Investigate increasing Maintainer Productivity with Pull Requests Environments,issue-#1444,waveywaves
+F006,Documentation / help: where is the config stored,issue-#1420,hholst80
+F007,Sessions doesn't support multiple headers sharing the same name,issue-#1331,ducaale
+F008,Warn the user when there is no incoming data after a certain time passed on stdi,issue-#1255,isidentical
+F009,Gracefully handle DNS failures,issue-#1248,isidentical
+F010,Create a style that matches with the HTTPie for Web/Desktop,issue-#1237,isidentical
+F011,Plugin updates through httpie interface,issue-#1234,isidentical
+F012,Support Bearer Authentication,issue-#1215,isidentical
+F013,Ignoring broken plugins,issue-#1204,isidentical
+F014,:// to use command name for scheme,issue-#1195,sevenc-nanashi
+F015,Don't silently fix invalid JSON with duplicate keys,issue-#1133,annettejanewilson

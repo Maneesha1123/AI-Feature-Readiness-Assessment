@@ -1,6 +1,7 @@
 tc_id,feature_id,description,result
-TC001,F001,Verify valid login,Pass
-TC002,F002,Verify registration,Pass
-TC003,F003,Verify cart,Pass
-TC004,F004,Verify checkout,Fail
-TC005,F005,Verify tracking,Pass
+TC-003,F003,Verify that the shortcut flag correctly disables SSL certificate verification,pass
+TC-004,F004,Verify that HTTPie does not error out and attempts a reasonable default connection when no hostname is passed,pass
+TC-007,F007,Verify that a session correctly stores two headers with the same name without overwriting,pass
+TC-009,F009,Verify that an invalid hostname produces a clear DNS failure message,pass
+TC-014,F014,Verify that a request with no hostname defaults to localhost,pass
+TC-012,F012,Verify that requests include an Authorization header with a Bearer token when authentication is configured,pass
