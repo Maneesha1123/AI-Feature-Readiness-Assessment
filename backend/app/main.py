@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 
 from backend.app.database import SessionLocal, engine
 from backend.app import models, schemas, crud
+from backend.app.github_service import get_repository_issues
 from backend.app.readiness import calculate_readiness
 from backend.app.ai import infer_missing_links, detect_stale_links, run_full_assessment
 
@@ -135,3 +136,13 @@ def reset_decisions(participant_id: str = None, db: Session = Depends(get_db)):
     """Clear recorded decisions - use between pilot participants."""
     count = crud.clear_decisions(db, participant_id)
     return {"deleted": count}
+
+@app.get("/github/issues")
+def github_issues():
+    issues = get_repository_issues("httpie", "cli")
+
+    return {
+        "repository": "httpie/cli",
+        "count": len(issues),
+        "issues": issues
+    }

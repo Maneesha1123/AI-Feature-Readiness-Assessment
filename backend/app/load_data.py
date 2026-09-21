@@ -19,6 +19,13 @@ def load_features(db):
     df = pd.read_csv("dataset/features.csv")
 
     for _, row in df.iterrows():
+        existing = db.query(Feature).filter(
+            Feature.feature_id == row["feature_id"]
+        ).first()
+
+        if existing:
+            continue
+
         db.add(
             Feature(
                 feature_id=row["feature_id"],
@@ -36,6 +43,13 @@ def load_acceptance(db):
     df = pd.read_csv("dataset/acceptance_criteria.csv")
 
     for _, row in df.iterrows():
+        existing = db.query(AcceptanceCriteria).filter(
+            AcceptanceCriteria.ac_id == row["ac_id"]
+        ).first()
+
+        if existing:
+            continue
+
         db.add(
             AcceptanceCriteria(
                 ac_id=row["ac_id"],
@@ -53,6 +67,13 @@ def load_testcases(db):
     df = pd.read_csv("dataset/test_cases.csv")
 
     for _, row in df.iterrows():
+        existing = db.query(TestCase).filter(
+            TestCase.tc_id == row["tc_id"]
+        ).first()
+
+        if existing:
+            continue
+
         db.add(
             TestCase(
                 tc_id=row["tc_id"],
@@ -65,11 +86,19 @@ def load_testcases(db):
     db.commit()
     print("Test Cases loaded")
 
-
 def load_traceability(db):
     df = pd.read_csv("dataset/traceability.csv")
 
     for _, row in df.iterrows():
+        existing = db.query(Traceability).filter(
+            Traceability.feature_id == row["feature_id"],
+            Traceability.ac_id == row["ac_id"],
+            Traceability.tc_id == row["tc_id"],
+        ).first()
+
+        if existing:
+            continue
+
         db.add(
             Traceability(
                 feature_id=row["feature_id"],
@@ -82,11 +111,18 @@ def load_traceability(db):
     db.commit()
     print("Traceability loaded")
 
-
 def load_deployment(db):
     df = pd.read_csv("dataset/deployment.csv")
 
     for _, row in df.iterrows():
+        existing = db.query(Deployment).filter(
+            Deployment.feature_id == row["feature_id"],
+            Deployment.environment == row["environment"],
+        ).first()
+
+        if existing:
+            continue
+
         db.add(
             Deployment(
                 feature_id=row["feature_id"],
@@ -103,6 +139,14 @@ def load_requirement_history(db):
     df = pd.read_csv("dataset/requirement_history.csv")
 
     for _, row in df.iterrows():
+        existing = db.query(RequirementHistory).filter(
+            RequirementHistory.feature_id == row["feature_id"],
+            RequirementHistory.ac_id == row["ac_id"],
+        ).first()
+
+        if existing:
+            continue
+
         db.add(
             RequirementHistory(
                 feature_id=row["feature_id"],
@@ -114,7 +158,6 @@ def load_requirement_history(db):
 
     db.commit()
     print("Requirement History loaded")
-
 
 def main():
     db = SessionLocal()

@@ -1,7 +1,14 @@
 ac_id,feature_id,description,version
-AC-003,F003,Users can use a short verify=no shortcut flag instead of typing the full option name to disable SSL verification.,1
-AC-004,F004,When no hostname is passed HTTPie must default the request to localhost so that commands like http :8080 work correctly.,2
-AC-007,F007,Sessions must support multiple headers that share the same name instead of overwriting earlier values with later ones.,1
-AC-009,F009,HTTPie must detect DNS resolution failures and display a clear useful error message instead of a generic connection error.,1
-AC-012,F012,HTTPie must support Bearer token authentication by allowing users to pass a token that is sent in the Authorization header.,1
-AC-014,F014,HTTPie must accept a shorthand where a colon-slash-slash prefix is interpreted as using the following word as the URL scheme.,1
+AC001,F001,Login with valid credentials,1
+AC002,F002,Register new user,1
+AC003,F003,Add products to cart,1
+AC004,F004,Complete checkout,1
+AC005,F005,Track order,1
+AC-GH2014-01,GH-2014,Responses with the same or sufficiently similar content and the same IP are treated as duplicates.,1
+AC-GH2014-02,GH-2014,Responses with the same or sufficiently similar content but different IPs are not treated as duplicates.,1
+AC-GH2014-03,GH-2014,Responses with different content are not treated as duplicates even when the IP is the same.,1
+AC-GH2014-04,GH-2014,Near-duplicate response content is treated as duplicate when the SimHash distance is less than or equal to 3 and the IP is the same.,1
+AC-GH2014-05,GH-2014,Near-duplicate response content with different IPs is not treated as duplicate.,1
+AC-GH2014-06,GH-2014,When the response IP is empty deduplication falls back to content similarity.,1
+AC-GH2014-07,GH-2014,Multiple subdomains returning the same or similar content from the same IP are deduplicated.,1
+AC-GH2014-08,GH-2014,Multiple subdomains returning the same or similar content from different IPs are retained separately.,1
