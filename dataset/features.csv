@@ -1,7 +1,8 @@
 feature_id,feature_name,sprint,product_owner
-F001,User Login,Sprint 1,Alice
-F002,User Registration,Sprint 1,Alice
-F003,Shopping Cart,Sprint 2,Bob
-F004,Checkout,Sprint 2,Bob
-F005,Order Tracking,Sprint 3,Charlie
-GH-2014,IP-aware response deduplication,GitHub,ProjectDiscovery
+F003,Add shortcut to --verify=no,issue-#1536,franciscobretal
+F004,Default to localhost,issue-#1519,sayanarijit
+F007,Sessions doesn't support multiple headers sharing the same name,issue-#1331,ducaale
+F009,Gracefully handle DNS failures,issue-#1248,isidentical
+F012,Support Bearer Authentication,issue-#1215,isidentical
+F014,:// to use command name for scheme,issue-#1195,sevenc-nanashi
+GH-2014,Duplicate response detection across subdomains,issue-#2014,Pooja-prad

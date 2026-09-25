@@ -1,2 +1,3 @@
 feature_id,ac_id,old_text,new_text
 F004,AC-004,When no hostname is passed HTTPie should not error out and should attempt a reasonable default connection.,When no hostname is passed HTTPie must default the request to localhost so that commands like http :8080 work correctly.
+GH-2014,AC-GH2014-04,Near-duplicate response content is treated as duplicate when the content is broadly similar and the IP is the same.,Near-duplicate response content is treated as duplicate when the SimHash distance is less than or equal to 3 and the IP is the same.
