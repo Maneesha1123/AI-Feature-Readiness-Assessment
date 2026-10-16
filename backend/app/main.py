@@ -4,8 +4,14 @@ from sqlalchemy.orm import Session
 
 from backend.app.database import SessionLocal, engine
 from backend.app import models, schemas, crud
+from backend.app.github_service import get_repository_issues
 from backend.app.readiness import calculate_readiness
-from backend.app.ai import infer_missing_links, detect_stale_links, run_full_assessment
+from backend.app.ai import (
+    infer_missing_links,
+    detect_stale_links,
+    run_full_assessment,
+    build_session_set,
+)
 
 # Create database tables (only creates tables that don't already exist,
 # so this is safe to re-run - it will add the new evaluation_decisions
@@ -106,6 +112,18 @@ def ai_full_assessment(feature_id: str = None, db: Session = Depends(get_db)):
     return run_full_assessment(db, feature_id)
 
 
+@app.get("/ai/session-set")
+def ai_session_set(feature_id: str = None, db: Session = Depends(get_db)):
+    """The ~20 flags to put in front of an evaluation participant.
+
+    A full assessment produces over 400 flags, which no participant can
+    review in one session. This returns a fixed, deterministic subset
+    spanning the range of confidence and weighted towards the cases where
+    practitioners are most likely to disagree. Every participant sees the
+    same items in the same order, so their reasoning can be compared."""
+    return build_session_set(db, feature_id)
+
+
 # -------------------------
 # NEW: Evaluation endpoints (RQ4 - Accept/Override data collection)
 # -------------------------
@@ -135,3 +153,13 @@ def reset_decisions(participant_id: str = None, db: Session = Depends(get_db)):
     """Clear recorded decisions - use between pilot participants."""
     count = crud.clear_decisions(db, participant_id)
     return {"deleted": count}
+
+@app.get("/github/issues")
+def github_issues():
+    issues = get_repository_issues("httpie", "cli")
+
+    return {
+        "repository": "httpie/cli",
+        "count": len(issues),
+        "issues": issues
+    }

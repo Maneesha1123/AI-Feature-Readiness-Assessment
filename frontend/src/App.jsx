@@ -90,11 +90,28 @@ function App() {
       .catch((err) => console.error(err));
   }, []);
 
+  // Participants see the curated session set, not all 400+ flags. The backend
+  // picks a fixed 20 spanning the range of confidence; see build_session_set
+  // in ai.py for why these and not a random sample. Swap the path back to
+  // /ai/assessment to review the whole dataset yourself.
   const loadAssessment = () => {
     setLoadingAssessment(true);
     axios
-      .get(`${API}/ai/assessment`)
-      .then((res) => setAssessment(res.data))
+      .get(`${API}/ai/session-set`)
+      .then((res) => {
+        // reshape into the two arrays the rest of this component expects,
+        // keeping the session order so item 1 is seen first
+        const items = res.data.items || [];
+        setAssessment({
+          missing_link_inferences: items
+            .filter((i) => i.kind === "missing")
+            .map((i) => ({ ...i.payload, position: i.position, stratum: i.stratum })),
+          stale_link_detections: items
+            .filter((i) => i.kind === "stale")
+            .map((i) => ({ ...i.payload, position: i.position, stratum: i.stratum })),
+          composition: res.data.composition,
+        });
+      })
       .catch((err) => console.error(err))
       .finally(() => setLoadingAssessment(false));
   };
