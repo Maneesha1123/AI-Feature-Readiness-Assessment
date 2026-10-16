@@ -1,0 +1,26 @@
+[
+  {
+    "repo": "commons-lang",
+    "commits_total": 9816,
+    "commits_with_jira_key": 1641,
+    "pct_commits_with_key": 16.7,
+    "commits_key_and_test": 857,
+    "commits_key_code_no_test": 461,
+    "unique_issues_referenced": 1002,
+    "issues_with_test_link": 662,
+    "issues_code_but_no_test": 250,
+    "pct_issues_with_test_link": 66.1
+  },
+  {
+    "repo": "kafka",
+    "commits_total": 18412,
+    "commits_with_jira_key": 11484,
+    "pct_commits_with_key": 62.4,
+    "commits_key_and_test": 8696,
+    "commits_key_code_no_test": 1976,
+    "unique_issues_referenced": 9735,
+    "issues_with_test_link": 7417,
+    "issues_code_but_no_test": 1634,
+    "pct_issues_with_test_link": 76.2
+  }
+]

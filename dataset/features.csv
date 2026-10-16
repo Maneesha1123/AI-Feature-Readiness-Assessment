@@ -1,8 +1,451 @@
 feature_id,feature_name,sprint,product_owner
-F003,Add shortcut to --verify=no,issue-#1536,franciscobretal
-F004,Default to localhost,issue-#1519,sayanarijit
-F007,Sessions doesn't support multiple headers sharing the same name,issue-#1331,ducaale
-F009,Gracefully handle DNS failures,issue-#1248,isidentical
-F012,Support Bearer Authentication,issue-#1215,isidentical
-F014,:// to use command name for scheme,issue-#1195,sevenc-nanashi
-GH-2014,Duplicate response detection across subdomains,issue-#2014,Pooja-prad
+F0001,KRaft support in OffsetsForLeaderEpochRequestTest,2023-Q4,PO-a989b50c
+F0002,New ClientQuotas are not written to ZK from snapshot,2023-Q2,PO-4fde381c
+F0003,Change User Customizable Metrics API in StreamsMetrics interface,2019-Q4,PO-9a0bd14c
+F0004,javaapi ZookeeperConsumerConnectorTest duplicates many tests in the scala version,2011-Q4,PO-f20021c1
+F0005,Connect RetryUtilTest flakey in CPU-limited environments,2022-Q4,PO-eacfe4d7
+F0006,Consumer poll loop over the same record after a CorruptRecordException,2017-Q3,PO-c8f8c9a8
+F0007,Rename AdminManager to ZkAdminManager,2021-Q1,PO-a148a91d
+F0008,Look into directly passing request paramaters instead of complete request in Share Coordinator Shard,2026-Q3,PO-6f20c401
+F0009,Enable resizing various broker thread pools,2017-Q4,PO-d7cd0516
+F0010,New consumer offsetsForTimes timeout exception has wrong message,2024-Q2,PO-53929ca3
+F0011,Add a generated ApiMessageType class,2019-Q1,PO-a148a91d
+F0012,SslEngineFactory is NOT closed when channel is closing,2020-Q2,PO-0f38fd0c
+F0013,Reuse of a mapped stream causes an Invalid Topology,2019-Q4,PO-2e36a447
+F0014,Improve accuracy of the log cleaner throttle rate,2018-Q2,PO-dc04a215
+F0015,Incorrect null check in the constructor for ConnectorHealth and AbstractState,2019-Q3,PO-75857ebd
+F0016,Integration tests in Java don't really run kraft case,2024-Q2,PO-ff69b1a5
+F0017,Producer should drop queued sends when transaction is aborted,2017-Q2,PO-bbda4173
+F0018,Move RemoteIndexCache to the storage module,2022-Q4,PO-5eea6bab
+F0019,Unit test to make sure `group.id` and `group.instance.id` won't affect each other,2019-Q2,PO-6b6c246e
+F0020,OffsetValidationTest.test_broker_rolling_bounce failing for Raft quorums,2021-Q1,PO-ec0818c5
+F0021,RemoteIndexCache fails to remove invalid files on init,2025-Q1,PO-506f77b2
+F0022,Unable to change min.insync.replicas default,2015-Q2,PO-d1c9e348
+F0023,Add compatibility tests for FETCH and FETCH_SNAPSHOT kraft requests,2024-Q3,PO-37706976
+F0024,Unexpected InvalidTxnStateException on EndTxn when commit races with transaction timeout,2026-Q3,PO-53929ca3
+F0025,responses not logged properly in controller,2018-Q2,PO-f20021c1
+F0026,Fix failed e2e ConnectDistributedTest.test_dynamic_logging,2024-Q4,PO-0f38fd0c
+F0027,KRaft Controller Metric MBean names are incorrectly quoted,2021-Q3,PO-ec0818c5
+F0028,Liveness bug in truncation protocol can lead to indefinite URP,2020-Q4,PO-bbda4173
+F0029,Log a warning when users attempt to set a config controlled by Streams,2022-Q4,PO-7ffc6d97
+F0030,Use ZookeeperClient in KafkaApis,2017-Q4,PO-f20021c1
+F0031,Refactor ShareConsumerTest,2024-Q4,PO-0f38fd0c
+F0032,brings a compile error,2020-Q4,PO-ab98b516
+F0033,Rolling upgrade test for streams,2017-Q2,PO-5defa9f9
+F0034,Reduce the log4j2 cpu usage in PersisterStateManager,2025-Q4,PO-0f38fd0c
+F0035,Fetch from follower should never run the preferred read replica selection,2022-Q1,PO-0bc3c1c6
+F0036,Remove StorageTool#buildMetadataProperties,2024-Q3,PO-0f38fd0c
+F0037,NPE in ChunkedByteStream,2023-Q4,PO-72162846
+F0038,Cleaner can generate unindexable log segments,2015-Q1,PO-1dd060fb
+F0039,"Add cross version system test for ""streams"" static group membership",2026-Q3,PO-3f69e406
+F0040,Missing MM2 default exclude configs,2026-Q1,PO-18fa305b
+F0041,"Cluster missing topicIds from equals and hashCode, PartitionInfo missing equals and hashCode",2024-Q2,PO-fca9ed96
+F0042,Fix type-unsafety in KStreamKStreamJoin caused by isLeftSide,2024-Q1,PO-eacfe4d7
+F0043,Remove time based eviction of share sessions from the cache,2025-Q2,PO-63476e7c
+F0044,Add version mapping and feature dependencies commands to tools ( ),2024-Q3,PO-f4bb43ad
+F0045,An equal sign in a property value causes the broker to fail,2018-Q3,PO-dd2deb52
+F0046,FetchFromFollowerIntegrationTest testRackAwareRangeAssignor is flaky,2023-Q4,PO-45fca529
+F0047,Introduce new org.apache.kafka.tools.api.Decoder to replace kafka.serializer.Decoder,2024-Q2,PO-0f38fd0c
+F0048,ResetIntegrationTest unstable,2018-Q1,PO-3f69e406
+F0049,Use ValueSource to refactor AbstractFetcherThreadTest to eliminate unnecessary skip tests,2024-Q4,PO-0f38fd0c
+F0050,SocketChannel in Acceptor#accept is not closed upon IOException,2021-Q4,PO-d7b0c010
+F0051,MirrorMaker2 fails to detect topic if remote topic is created first,2020-Q3,PO-15f6a7fd
+F0052,System tests do not handle ZK chroot properly with SCRAM,2018-Q1,PO-d8e11ced
+F0053,Add a ListTopics() API to the new consumer,2015-Q2,PO-04696294
+F0054,Add CIDR support also into Authorizer.authorizeByResourceType,2026-Q3,PO-bda4a582
+F0055,MirrorMaker Checkpoint and Heartbeat records can accept unsupported versions when assertions are disabled,2026-Q2,PO-0f9d2c37
+F0056,Misc. nitpicks in log cleaner,2014-Q1,PO-386b4d73
+F0057,Fix flaky ShareConsumerTest#testShareAutoOffsetResetDefaultValue,2024-Q4,PO-0f38fd0c
+F0058,Flaky Test `KafkaAdminClientTest.testDefaultApiTimeoutOverride`,2020-Q1,PO-bbda4173
+F0059,Add time-based eviction to tiered storage index cache to prevent stale entries from accumulating,2025-Q4,PO-404c769c
+F0060,Add RPC-level integration tests for StreamsGroupDescribe,2025-Q4,PO-0643e89e
+F0061,"In KRaft mode, ISR is set incorrectly when creating a manual partition assignment with fenced broker(s)",2021-Q3,PO-a148a91d
+F0062,Failure on Windows due to an UnsupportedOperationException when StateDirectory sets file permissions,2021-Q1,PO-25f8f8d9
+F0063,Clients - resolve race condition for SubscriptionState in share group consumer,2024-Q4,PO-0baea723
+F0064,Handle SSL authentication failures as non-retriable exceptions in clients,2017-Q3,PO-d7cd0516
+F0065,ducker-ak has no option to skip the gradlew systemTestLibs build step,2026-Q1,PO-bda4a582
+F0066,Serdes for all message types in internal topic which is used in default implementation for RLMM,2021-Q1,PO-ce10adf3
+F0067,Cast transform doesn't handle invalid whole value casts gracefully,2024-Q1,PO-7f51173e
+F0068,resource leak in RSM fetchIndex inputStream,2025-Q1,PO-eff4858a
+F0069,ProducerFailureHandlingTest.testCannotSendToInternalTopic fails with TimeoutException while trying to fetch metadata for topic,2015-Q1,PO-8fed3205
+F0070,Add a metric tracking the number of open connections with a given SSL cipher type,2019-Q4,PO-a148a91d
+F0071,Print usage when parsing fails for ConsumerPerformance,2020-Q3,PO-e22e4058
+F0072,kafka-streams to configure internal topics message.timestamp.type=CreateTime,2018-Q1,PO-6c004c38
+F0073,InMemorySessionStore#fetch/backwardFetch doesn't return in correct order,2021-Q3,PO-eff4858a
+F0074,Consider removing date formatting from Segments class,2017-Q2,PO-5b49d99b
+F0075,Single-Key_single-timestamp IQs with versioned state stores,2023-Q3,PO-0cd6dd3b
+F0076,Flaky test NamedTopologyIntegrationTest,2021-Q4,PO-3f69e406
+F0077,Fix NPE messages in ConsoleShareConsumer,2025-Q3,PO-028ef4c4
+F0078,Use the same reaper thread in Persister as well as NetworkPartitionMetadataClient,2025-Q4,PO-1e2b4f68
+F0079,SharePartition - Add more unit tests,2024-Q3,PO-2d274fe7
+F0080,Kafka consumer delivers message whose offset is earlier than sought offset,2016-Q1,PO-2acdaa64
+F0081,suppress() with cogroup() throws ClassCastException,2020-Q3,PO-fb7a4e22
+F0082,Make RefreshingHttpsJwksTest#testSecondaryRefreshAfterElapsedDelay deterministic,2023-Q1,PO-42f0fb8a
+F0083,Transient Failure in kafka.api.PlaintextProducerSendTest.testFlush,2016-Q1,PO-04696294
+F0084,Connect standalone SASL file source and sink test fails without explanation,2018-Q1,PO-7ec1c827
+F0085,"StreamsBuilder.build fails with StreamsException ""Found a null keyChangingChild node for OptimizableRepartitionNode""",2020-Q1,PO-7fcfb426
+F0086,upgrade base image from jdk8 to jdk11,2024-Q4,PO-0f38fd0c
+F0087,"PushTelemetry sets terminating flag on validation failure, permanently locking out client instance",2026-Q3,PO-3655d819
+F0088,Constant 100% cpu usage by all kafka brokers,2019-Q1,PO-ac56fb5f
+F0089,Create KafkaShareConsumer interface,2024-Q2,PO-0baea723
+F0090,Refactor and clean the code in HeadersStoreUpgradeIntegrationTest,2026-Q1,PO-0cd6dd3b
+F0091,Use an exponential backoff retry mechanism while reconfiguring connector tasks,2023-Q1,PO-7f51173e
+F0092,Replace EasyMock and PowerMock with Mockito in ExactlyOnceWorkerSourceTaskTest,2022-Q3,PO-35ad357e
+F0093,Broker leaks memory and file descriptors after sudden client disconnects,2018-Q1,PO-44be3e73
+F0094,Add Time logical type for Copycat,2015-Q4,PO-d8e11ced
+F0095,NPE: Foreign key join serde may not be initialized with default serde if application is distributed,2020-Q3,PO-9fdec62a
+F0096,Improve TransactionIndex instance handling while copying to and fetching from RSM,2023-Q2,PO-ce10adf3
+F0097,RecordTooLargeExceptions in group coordinator when offsets.topic.compression.codec is used,2025-Q4,PO-49203976
+F0098,Add metadata record serde logic for,2021-Q1,PO-bbda4173
+F0099,SASL/OAUTHBEARER client response is missing %x01 separators,2018-Q3,PO-ec0818c5
+F0100,MembershipManagerImpl.updateSubscription fails if already empty subscription,2024-Q1,PO-0baea723
+F0101,Producer fails with NPE if compressed V0 or V1 record is larger than batch size,2017-Q2,PO-3f69e406
+F0102,ConsumerGroupDescribe API does not return partitions being revoked,2026-Q2,PO-df02ab76
+F0103,Receive buffers allocated from MemoryPool may not be released if request is invalid,2026-Q1,PO-35fdac44
+F0104,Flaky Test ListOffsetsRequestTest.testResponseIncludesLeaderEpoch,2021-Q1,PO-3f69e406
+F0105,"Mark ""bootstrap.resolve.timeout.ms"" as an experimental feature",2026-Q3,PO-0f38fd0c
+F0106,Flaky KafkaStatusBackingStoreFormatTest#putTopicStateRetriableFailure,2023-Q2,PO-eacfe4d7
+F0107,Mirror Maker could lose data on unclean shutdown,2014-Q3,PO-2acdaa64
+F0108,Allow users to specify different types of state stores in Streams DSL,2016-Q2,PO-04696294
+F0109,Add Share Group dynamic and broker configs,2024-Q2,PO-20cb4e0e
+F0110,abortTransactions should not return abortable exception,2025-Q2,PO-2c2ee824
+F0111,Kafka Connect's JSON Converter never outputs a null value,2016-Q2,PO-7ec1c827
+F0112,ThreadCache#sizeBytes() should check overflow,2017-Q4,PO-6b74069f
+F0113,The controller must add all extant brokers to BrokerHeartbeatTracker when activating,2024-Q4,PO-a148a91d
+F0114,Support zone index in IPv6 regex,2016-Q1,PO-c5ded5bb
+F0115,source-record-write-rate metrics include filtered records,2023-Q1,PO-f6f3caac
+F0116,Console consumer fails with `IllegalStateException`,2024-Q1,PO-df02ab76
+F0117,SSL factory for inter-broker listener is broken,2019-Q2,PO-d7cd0516
+F0118,SchemaProjector should successfully project when source schema field is missing and target schema field is optional,2016-Q3,PO-2759c824
+F0119,ZooKeeper client times out with localhost due to random choice of ipv4/ipv6,2018-Q3,PO-d7cd0516
+F0120,Fix flaky ReplicaManagerTest#testSuccessfulBuildRemoteLogAuxStateMetrics,2024-Q4,PO-7c118b1b
+F0121,Release acquired records for members whose share session is evicted due to connection drop,2025-Q2,PO-63476e7c
+F0122,Move DelegationTokenCommand to tools,2023-Q1,PO-15f6a7fd
+F0123,createMessageStreams() in javaapi.ZookeeperConsumerConnector does not throw,2013-Q4,PO-821d21c9
+F0124,refactor TopologyTest to test different store type with parametrized,2022-Q1,PO-eff4858a
+F0125,ConsumerBounceTest.testSeekAndCommitWithBrokerFailures transient failure,2015-Q1,PO-04696294
+F0126,add unit test for ClusterTemplate offering zero ClusterConfig,2024-Q2,PO-0f38fd0c
+F0127,MirrorMaker should handle mirroring messages w/o timestamp better,2016-Q3,PO-f20021c1
+F0128,Support record keys in the foreignKeyExtractor argument of KTable foreign join,2024-Q4,PO-5e8ff8ce
+F0129,Incompatible MemberDescription constructor change,2019-Q3,PO-6b6c246e
+F0130,Client support for OffsetFetch and OffsetCommit with topic ID,2023-Q3,PO-98b9869c
+F0131,Add print and writeAsText functions to the Streams DSL,2016-Q1,PO-04696294
+F0132,AsyncKafkaConsumer#close does not send heartbeat to leave group,2024-Q2,PO-0f38fd0c
+F0133,Task not found in StateUpdater throwing an exception and causing unnecessary restoration,2026-Q2,PO-5b49d99b
+F0134,"add 0.11, 1.0, 1.1, and 2.0 streams dependencies to dockerfile",2024-Q4,PO-0f38fd0c
+F0135,Implement Topic Command changes,2020-Q3,PO-df02ab76
+F0136,"topic name with ""."" cannot be created after deletion",2022-Q4,PO-0936a2e5
+F0137,Flaky test - testUnrecoverableError - ProducerIdManagerTest,2023-Q4,PO-2778abbc
+F0138,Transactional producer aborts batches incorrectly in abortable error state,2017-Q2,PO-bbda4173
+F0139,Controller code has race conditions and synchronization bugs,2012-Q3,PO-3dec1778
+F0140,add log4j.properties to test-common and test-common-api,2024-Q4,PO-0f38fd0c
+F0141,Implement persister error handling and make write calls async,2024-Q3,PO-20cb4e0e
+F0142,fix flay org.apache.kafka.clients.consumer.internals.FetcherTest.testEarlierOffsetResetArrivesLate,2021-Q1,PO-0f38fd0c
+F0143,Wrong Base64 encoder used by OIDC OAuthBearerLoginCallbackHandler,2022-Q4,PO-6bc3e26b
+F0144,Broker doesn't reject Produce request with inconsistent state,2018-Q1,PO-4221d157
+F0145,Flaky Test StoreQueryIntegrationTest#shouldQueryAllStalePartitionStores,2021-Q1,PO-3f69e406
+F0146,Update Kafka Streams integration tests using IQv2 to new streams protocol,2025-Q3,PO-ca1f1354
+F0147,getTopicMetadata does not respect producer config settings,2012-Q4,PO-386b4d73
+F0148,Enable idle expiry of connections which are never selected,2018-Q3,PO-d7cd0516
+F0149,"URI scheme in ""listeners"" property should not be case-sensitive",2016-Q1,PO-63a2f6a6
+F0150,SessionWindows are closed too early,2021-Q2,PO-3f69e406
+F0151,Improve interrupts handling when updating assignment for callbacks,2026-Q1,PO-53929ca3
+F0152,Wrong broker destinations for DeleteRecords requests when more than one topic is involved and the topics/partitions are led by different brokers,2024-Q1,PO-73463c05
+F0153,"The error message of creating ` cluster_metadata` should NOT be ""Authorization failed""",2024-Q2,PO-0f38fd0c
+F0154,Oversize decompressed telemetry payload returns INVALID_RECORD and permanently disables client telemetry,2026-Q3,PO-3a62088d
+F0155,Add remote log metadata flag to the dump log tool,2024-Q1,PO-18fa305b
+F0156,High-Level Consumer: expose fetcher threads number as a parameter,2013-Q4,PO-7d1e785c
+F0157,Throw an error message if any unsupported feature is used with,2025-Q2,PO-2778abbc
+F0158,log.cleaner.io.max.bytes.per.second cannot be changed dynamically,2022-Q2,PO-01b56e72
+F0159,Extend support for opaque (i.e. non-JWT) tokens in SASL/OAUTHBEARER,2023-Q4,PO-01643f1d
+F0160,The Kafka protocol generator should allow null default values for strings,2019-Q1,PO-a148a91d
+F0161,KRaft support in GroupCoordinatorIntegrationTest,2023-Q4,PO-a989b50c
+F0162,Follower should be in the isr if its FetchRequest has fetched up to the logEndOffset of leader,2016-Q4,PO-dc04a215
+F0163,Extend InvalidConfigurationException related exceptions,2025-Q1,PO-2c2ee824
+F0164,Flaky/Failing org.apache.kafka.streams.integration.OuterJoinListValueStoreRestorationTest,2026-Q2,PO-5b49d99b
+F0165,"Fix findbugs ""format string should use %n rather than \n"" in tools",2017-Q1,PO-a148a91d
+F0166,NoSuchElementException (again) in Kafka Streams iterator metrics,2025-Q3,PO-3a62088d
+F0167,Drop outdated hadoop contrib modules,2015-Q4,PO-57124b02
+F0168,Kubernetes - Kafka clients are resolving DNS entries only one time,2018-Q4,PO-d2cd5a2a
+F0169,SslFactory not closed after extracting SSLSocketFactory,2026-Q3,PO-18fa305b
+F0170,Implement new consumer offsetsForTimes,2023-Q2,PO-53929ca3
+F0171,TopologyTestDriver processes intermediate results in the wrong order,2020-Q1,PO-69d38292
+F0172,Migrate TopicBasedRemoteLogMetadataManagerMultipleSubscriptionsTest to new test infra,2024-Q2,PO-0f38fd0c
+F0173,Add retry mechanism for cleaning up dangling remote segments,2024-Q3,PO-eff4858a
+F0174,Distributed herder tick thread loops rapidly when worker loses leadership,2021-Q1,PO-35ad357e
+F0175,Group Coordinator Shards are not unloaded when consumer_offsets topic is deleted,2025-Q2,PO-df02ab76
+F0176,The background thread should try to process the remaining task until the shutdown timer is expired,2023-Q3,PO-ecf74d39
+F0177,Concurrent createTopics calls may throw NodeExistsException,2018-Q2,PO-5eea6bab
+F0178,Transient failure in ConsumerCoordinatorTest.testAutoCommitDynamicAssignment,2016-Q3,PO-bbda4173
+F0179,Resource leak at multiple places in the code,2022-Q2,PO-b25573e6
+F0180,Need to improve handling of TimeoutException when committing offsets,2021-Q1,PO-7ffc6d97
+F0181,kafka-delete-records / DeleteRecordsCommand should use standard exception handling,2024-Q1,PO-eacfe4d7
+F0182,KRaft support in LeaderEpochIntegrationTest,2023-Q4,PO-a989b50c
+F0183,Add ducktape tests for simultaneous broker + controller failure,2025-Q1,PO-ef8f1a80
+F0184,test_performance_services.py should use DEV version to run kafka service,2024-Q4,PO-0f38fd0c
+F0185,Add new group coordinator executor metrics,2026-Q1,PO-49203976
+F0186,AsyncKafkaConsumer doesn't honor interrupted thread status on KafkaConsumer.poll(Duration),2024-Q2,PO-0baea723
+F0187,Add support for share acknowledgement request in KafkaApis,2024-Q2,PO-20cb4e0e
+F0188,UniformHeterogeneousAssignmentBuilder throws NPE when member has not subscriptions,2024-Q2,PO-df02ab76
+F0189,Set open ACL permissions for old consumer znode path,2018-Q3,PO-78deacf0
+F0190,Move TopicFilter shared class,2023-Q1,PO-b2cb2a61
+F0191,Add under-min-isr option to describe topics command,2018-Q3,PO-676dc05f
+F0192,KafkaConsumer.close() can block unnecessarily due to leave group waiting for a reply,2015-Q4,PO-d8e11ced
+F0193,Add a tool to Reset Consumer Group Offsets,2017-Q1,PO-8d9bba88
+F0194,Exception Hierarchy for Streams,2016-Q1,PO-04696294
+F0195,Clarify handling of connector name in config,2017-Q3,PO-c4c34017
+F0196,ConfigCommand failing to alter configs,2018-Q1,PO-bbda4173
+F0197,Timed calls to future.get in DefaultStatePersister and test improvements,2024-Q4,PO-6f20c401
+F0198,Replace scala collection by java collection in generating MBeans attributes,2020-Q3,PO-0f38fd0c
+F0199,StreamsConfig doesn't pass through custom consumer and producer properties to ConsumerConfig and ProducerConfig,2016-Q3,PO-dca7ef52
+F0200,System test test_dynamic_logging in connect_distributed_test is failing,2024-Q2,PO-b2cb2a61
+F0201,Synchronously verify Connect worker startup failure in InternalTopicsIntegrationTest,2024-Q2,PO-35ad357e
+F0202,Kafka Streams consuming from a pattern goes to PENDING_SHUTDOWN when adding a new topic,2020-Q4,PO-beee9c45
+F0203,NioEchoServer should generate meaningful id instead of incremential number,2024-Q2,PO-0f38fd0c
+F0204,Can't have StandbyTasks in KafkaStreams where NUM_STREAM_THREADS_CONFIG > 1,2016-Q3,PO-dca7ef52
+F0205,Fix masked test error in KafkaConsumerTest.testSubscriptionChangesWithAutoCommitEnabled,2016-Q3,PO-bbda4173
+F0206,Update to Scala 2.13.10,2022-Q3,PO-337e56db
+F0207,Follower should not send OffsetForLeaderEpoch for undefined leader epochs,2018-Q2,PO-4a75a480
+F0208,fix flaky streams/streams_standby_replica_test.py,2020-Q3,PO-0f38fd0c
+F0209,Rewrite ShareConsumerTest#setup by beforeEach and move ShareConsumerTest to clients-integration-tests module,2025-Q1,PO-0f38fd0c
+F0210,Add dynamic broker config to enabled tiered offset follower fetch,2024-Q3,PO-65dce11d
+F0211,Possible NPE in ConfigDef when rendering (enriched) RST or HTML when documentation is not set/NULL,2021-Q3,PO-1a723a59
+F0212,Accumulate acquire offsets response for share group,2025-Q4,PO-20cb4e0e
+F0213,StreamThread shutdown calls completeShutdown only in CREATED state,2024-Q3,PO-5935864a
+F0214,metadata.fetch.timeout.ms set to zero blocks forever,2014-Q4,PO-32dd71cb
+F0215,Expose consistent Raft metadata to components,2021-Q1,PO-4fde381c
+F0216,Rewrite AddPartitionsTest with ClusterInstance,2026-Q1,PO-0f38fd0c
+F0217,Purge the unsent offset commits/fetches when the member is fenced/failed,2023-Q4,PO-ecf74d39
+F0218,Add unit test for `ProducerStateManager#readSnapshot` and `ProducerStateManager#writeSnapshot`,2024-Q3,PO-0f38fd0c
+F0219,Checking hasNext from SegementIterator could throw InvalidStateStoreException,2018-Q1,PO-5b49d99b
+F0220,StackOverflowError on producer when splitting batches,2019-Q2,PO-be2283c2
+F0221,Repeated UnsupportedVersionException logged when running Kafka 3.7.0-RC2 KRaft cluster with metadata version 3.6,2024-Q1,PO-098146b6
+F0222,Intermittent INVALID_FETCH_SESSION_EPOCH error on FETCH request,2019-Q1,PO-b6501333
+F0223,KafkaConsumer.offsetsForTimes() hangs and times out on an empty map,2016-Q4,PO-f20021c1
+F0224,Connect Rest API allows creating connectors with an empty name,2017-Q1,PO-c4c34017
+F0225,FileStreamSourceConnector and FileStreamSinkConnector should implement   APIs (alterOffsets),2023-Q2,PO-7f51173e
+F0226,Errors.exceptionName() can throw NPE,2016-Q2,PO-57124b02
+F0227,"When resuming Streams active task with EOS, the checkpoint file should be deleted",2020-Q3,PO-04696294
+F0228,Expose API in KafkaStreams to fetch all local offset lags,2020-Q1,PO-522a4544
+F0229,Add support for reading KRaft snapshots in kafka-dump-log,2022-Q2,PO-4fde381c
+F0230,MetadataLoader must call finishSnapshot after loading a snapshot,2023-Q2,PO-a148a91d
+F0231,Need a way to update quota for TokenBucket registered with Sensor,2020-Q3,PO-4a75a480
+F0232,Add request/response classes for transactions ( ),2017-Q1,PO-3f69e406
+F0233,Race condition between log segment flush and file deletion causing log dir to go offline,2025-Q3,PO-1882e9c3
+F0234,StreamThread dies with IllegalStateException: Attempted to create an standby task that we already own during a standby/active recycle,2026-Q3,PO-4864b774
+F0235,Consumer.position returns incorrect results for Kafka 0.10.1.0 client,2016-Q4,PO-ccfcf296
+F0236,Null offsets in copycat causes exception in OffsetStorageWriter,2015-Q4,PO-d8e11ced
+F0237,Add additional log concurrency test cases,2020-Q2,PO-bbda4173
+F0238,Delete quota node in zookeeper when configs are empty,2022-Q4,PO-c8b1d6d9
+F0239,Add integration testing ensuring that the reassignment tool can change replication quota with rebalance in progress,2020-Q2,PO-bbda4173
+F0240,Move MetadataCacheTest to metadata module,2025-Q1,PO-ff69b1a5
+F0241,Request handler deadlocks attempting to acquire group metadata lock,2018-Q2,PO-d7cd0516
+F0242,Fast election during reassignment can lead to replica fetcher failures,2020-Q1,PO-bbda4173
+F0243,AsyncKafkaConsumer removes offset fetch responses from cache too aggressively,2024-Q2,PO-08ba0b4f
+F0244,KRaft support in GetOffsetShellTest,2023-Q4,PO-a989b50c
+F0245,enrich the authorization error message of connecting to controller,2025-Q1,PO-0f38fd0c
+F0246,Flaky test: ClientIdQuotaTest.testQuotaOverrideDelete,2025-Q1,PO-0baea723
+F0247,Add Produced class and new to and through overloads to KStream,2017-Q3,PO-dca7ef52
+F0248,Cached stores may return deleted values,2024-Q4,PO-634c7f7e
+F0249,Add configurable min.insync.replicas (default=2) for remote_log_metadata topic,2025-Q4,PO-90a25d18
+F0250,CONSUMER-ID and HOST values are concatenated if the CONSUMER-ID is > 50 chars,2017-Q4,PO-545f73e1
+F0251,Add changelog topic configuration to KTable suppress,2019-Q1,PO-aca4372c
+F0252,Consolidate Map usages in TransactionManager,2018-Q4,PO-1c74faf2
+F0253,Restarts of MirrorCheckpointTask should not permanently interrupt offset translation,2023-Q4,PO-eacfe4d7
+F0254,deal with empty TopicData list in producer and fetch request,2012-Q3,PO-f20021c1
+F0255,Enable KafkaLog4jAppender to work with SASL enabled brokers,2016-Q1,PO-e0384d32
+F0256,Incorrect assertion in KafkaBasedLogTest.testSendAndReadToEnd,2015-Q4,PO-d8e11ced
+F0257,Replace EasyMock and PowerMock with Mockito for NamedCacheMetricsTest,2021-Q2,PO-5a6a0c92
+F0258,expose clientId and correlationId in ConsumerConfig,2012-Q3,PO-f20021c1
+F0259,Incremental fetch sessions do not maintain or use leader epoch for fencing purposes,2019-Q4,PO-e32e5d2a
+F0260,"Remove deprecated ""UsePreviousTimeOnInvalidTimeStamp""",2021-Q2,PO-04696294
+F0261,Remove the DelayedOperation constructor that accepts an external lock,2025-Q2,PO-0f38fd0c
+F0262,Make Timer.java implement AutoCloseable,2023-Q2,PO-b25573e6
+F0263,test_fencing_static_consumer is flaky for consumer protocol when duplicate static members do not start up at the same time,2026-Q3,PO-49203976
+F0264,Source tasks can block herder thread by hanging during stop,2020-Q4,PO-35ad357e
+F0265,AdminClient should throw UnknownTopicOrPartitionException instead of UnknownServerException if altering configs of non-existing topic,2020-Q2,PO-a2cc917a
+F0266,Improve test coverage of CompositeReadOnlyKeyValueStore,2017-Q1,PO-dca7ef52
+F0267,KafkaConsumer#position() does not respect wakup when group protocol is CONSUMER,2024-Q2,PO-0f38fd0c
+F0268,Flaky Test PartitionTest#testDelayedFetchAfterAppendRecords,2019-Q1,PO-3f69e406
+F0269,Client Compatability KafkaTest uses invalid idempotency configs,2022-Q1,PO-532cb433
+F0270,Caching is not working properly with WindowStateStore when retaining duplicates,2020-Q2,PO-5452cdab
+F0271,SimpleConfigRepository in the storage module could be replaced by MockConfigRepository,2026-Q2,PO-4811aa02
+F0272,When a CachingStateStore is closed it should clear its associated NamedCache. Subsequent queries should throw InvalidStateStoreException,2016-Q4,PO-dca7ef52
+F0273,Improve test coverage UsePreviousTimeOnInvalidTimestamp,2017-Q1,PO-dca7ef52
+F0274,ZooKeeperAuthorizerTest should use standard authorizer for kraft,2022-Q2,PO-bbda4173
+F0275,invalid client sasl.jaas.config triggers NullPointerException,2017-Q1,PO-1597fcdd
+F0276,Improve test coverage StreamTask,2017-Q1,PO-dca7ef52
+F0277,"Thread-level ""process"" metrics are computed incorrectly",2020-Q1,PO-69d38292
+F0278,EOS Producer could throw illegal state if trying to complete a failed batch after fatal error,2020-Q1,PO-6b6c246e
+F0279,Kafka server threads die due to OOME during long running test,2012-Q4,PO-3dec1778
+F0280,Transactional producer Epoch could not be reset,2020-Q1,PO-6b6c246e
+F0281,Ensure consistency while deleting the remote log segments,2023-Q3,PO-506f77b2
+F0282,Share group delete should be resilient to metadata image issues in group coordinator,2025-Q2,PO-6f20c401
+F0283,Fix segment flush logic,2013-Q3,PO-eb3b318a
+F0284,the necessary utilities in Dockerfile should include git,2020-Q3,PO-0f38fd0c
+F0285,Implement request and response handling for telemetry APIs,2023-Q4,PO-20cb4e0e
+F0286,Remove retention time from TxnOffsetCommit RPC,2017-Q2,PO-bbda4173
+F0287,Null and leaked AcquisitionLockTimerTask causes hanging AcknowledgeRequest and corrupted state of batch,2024-Q4,PO-0f38fd0c
+F0288,Replace EasyMock and PowerMock with Mockito for WorkerTest,2021-Q4,PO-47b5c505
+F0289,CoordinatorRuntime should initialize MemoryRecordsBuilder with max batch size write limit,2024-Q2,PO-2f35a7c4
+F0290,Change producer performance tool to optionally use the new producer,2014-Q1,PO-3dec1778
+F0291,KafkaConsumer rebalance with in-flight fetch can cause invalid position,2015-Q3,PO-f20021c1
+F0292,Flaky SharePartitionManagerTest,2025-Q1,PO-7c118b1b
+F0293,Cover consumer and share group protocols in docker sanity tests,2026-Q3,PO-0f38fd0c
+F0294,Implement consumer group membership state machine,2023-Q3,PO-98b9869c
+F0295,Fix flaky MetricsTest.testMetrics,2024-Q1,PO-0f38fd0c
+F0296,Fix flaky PlaintextAdminIntegrationTest.testConsumerGroups,2024-Q4,PO-0f38fd0c
+F0297,Compression support does numerous byte copies,2012-Q3,PO-386b4d73
+F0298,Improve protocol type errors when invalid sizes are received,2016-Q1,PO-5eea6bab
+F0299,Improve classic consumer rack-aware double rebalance on replica bounce,2026-Q3,PO-53929ca3
+F0300,KRaft unable to upgrade to v3.7.1 and later when multiple log dir is set,2024-Q2,PO-eff4858a
+F0301,Upgrade RocksDB dependency from 9.7.3 to something newer,2025-Q1,PO-3f69e406
+F0302,Include MirrorMaker connector configurations in docs,2023-Q1,PO-15f6a7fd
+F0303,Remove Deprecated methods under KeyQueryMetadata,2021-Q2,PO-23ed5f52
+F0304,Add secondary constructor for KafkaConfig with a default value for doLog,2016-Q2,PO-879e0f99
+F0305,Reduce allocations from MetadataResponse#convertToNodeArray,2022-Q4,PO-c05b8af7
+F0306,log actual socket send/receive buffer size after connecting in Selector,2016-Q3,PO-f20021c1
+F0307,improve the docuemtnation of DescribeTopicsOptions#partitionSizeLimitPerResponse,2025-Q1,PO-0f38fd0c
+F0308,Remove NotLeaderForPartitionException,2024-Q4,PO-0f38fd0c
+F0309,Dead brokers in ISR cause isr-expiration to fail with exception,2020-Q1,PO-6415054b
+F0310,KStream-GlobalKTable join semantics don't match documentation,2021-Q3,PO-18430f92
+F0311,Fix the code that calls the broker's config handler to pass the expected default resource name when using KRaft,2021-Q3,PO-f2e42885
+F0312,Clarify that KafkaPrincipalBuilder classes must also implement KafkaPrincipalSerde,2025-Q1,PO-15f6a7fd
+F0313,"Fix ""this-escape"" compiler warnings (BrokerTopicMetrics) for JDK 23",2024-Q4,PO-0f38fd0c
+F0314,Deprecate commit records without record metadata,2020-Q1,PO-01b8e7aa
+F0315,Make kraft configuration properties public,2021-Q2,PO-fcd2b14f
+F0316,Add annotations to mark classes as stable/unstable,2015-Q3,PO-d8e11ced
+F0317,The kafka-consumer-perf-test.sh script help information print useless parameters,2015-Q3,PO-2278ba89
+F0318,ConsumerMetadataResponse is not read completely,2014-Q2,PO-fe6accac
+F0319,Share partition fetch locks concurrent thread release,2025-Q2,PO-20cb4e0e
+F0320,Document about future timestamps allowed by message.timestamp.after.max.ms,2026-Q3,PO-4811aa02
+F0321,ZK consumer shutdown/topic event deadlock,2016-Q4,PO-fe6accac
+F0322,Remove the handling of FatalExitError in RemoteStorageThreadPool,2025-Q3,PO-506f77b2
+F0323,ServiceConfigurationError in JsonSerializer/Deserializer during Plugin Discovery,2024-Q3,PO-0d3f2c94
+F0324,ConsumerNetworkClient.send() should not require global lock,2017-Q1,PO-dc04a215
+F0325,Memory leak in `Sender.completeBatch` on TOPIC_AUTHORIZATION_FAILED,2016-Q1,PO-5eea6bab
+F0326,cross-compile multiple Scala versions and upgrade to SBT 0.12.1,2011-Q3,PO-ae0b37ab
+F0327,FileRawSnapshotWriter must flush before atomic move,2023-Q3,PO-37706976
+F0328,Add JMH module for Benchmarks,2016-Q3,PO-5b49d99b
+F0329,Mx4jLoader.maybeLoad should only be executed if kafka_mx4jenable is set to true,2017-Q3,PO-dc04a215
+F0330,Follow-up patch of,2015-Q2,PO-2acdaa64
+F0331,ConsumerRebalanceListener.onPartitionsRevoked() is not called on consumer close,2015-Q4,PO-567e9bf1
+F0332,"reviewers.py should grep ""authors"" to offer more candidates of reviewers information",2024-Q3,PO-0f38fd0c
+F0333,Kafka Connect applications should log info message when starting up,2017-Q3,PO-7ec1c827
+F0334,Fix race condition on backoffDeadlineMs on RPCProducerIdManager causing premature retries,2026-Q1,PO-08ba0b4f
+F0335,Processors created after acceptor started which can cause in a brief refusal to accept connections,2018-Q2,PO-1251cc15
+F0336,"correct the docs of ""messages"" for `kafka-consumer-perf-test.sh` and `kafka-share-consumer-perf-test.sh`",2025-Q3,PO-0f38fd0c
+F0337,avoid logging stacktrace directly,2012-Q1,PO-f20021c1
+F0338,Cleanup NetworkClient zk related logging,2025-Q1,PO-3655d819
+F0339,Improve flaky test reporting,2021-Q1,PO-5eea6bab
+F0340,Checked exceptions are not handled when deserializing kafka stream record,2024-Q4,PO-f81c5f2b
+F0341,Log flush should complete upon broker shutdown,2011-Q3,PO-fe6accac
+F0342,Add note to Transformation docs to avoid mutating records or their members,2020-Q4,PO-35ad357e
+F0343,Flaky tests in GlobalStreamThreadTest,2024-Q3,PO-3f69e406
+F0344,Kafka Streams: task assignment is not maintained on cluster restart or rolling restart,2016-Q2,PO-c45849cf
+F0345,Exception thrown when running console producer with no port number for the broker,2014-Q3,PO-ac61a1f8
+F0346,"""BigDecimal(double)"" should not be used",2020-Q1,PO-820bd6ca
+F0347,Sticky Assignor JMH Benchmark,2025-Q3,PO-2778abbc
+F0348,Add heterogeneous configuration to TargetAssignmentBuilderBenchmark,2024-Q3,PO-49203976
+F0349,VerifiableConsumer with max-messages doesn't exit,2017-Q4,PO-3f8d34df
+F0350,reset ControllerContext during resignation,2017-Q2,PO-3f1b6275
+F0351,use -1(latest) as time default value for tools.GetOffsetShell,2016-Q1,PO-b37e5c7f
+F0352,request logger no longer logs extra information in debug mode,2015-Q3,PO-ac61a1f8
+F0353,NoOpRecord incorrectly causes high controller queue time metric,2022-Q3,PO-4fde381c
+F0354,Client Error doesn't preserve or display original server error code when it is an unknown code,2015-Q2,PO-ac61a1f8
+F0355,"Add option ""dry run"" to Streams application reset tool",2017-Q2,PO-3f69e406
+F0356,Replace `ApiError#exception` by `Error#exception` for KafkaAdminClient,2025-Q2,PO-0f38fd0c
+F0357,OffsetFetcherUtils.updateSubscriptionState logs at WARN for benign race condition during rebalance,2026-Q2,PO-31df2e9b
+F0358,Inter-worker SSL is broken for keystores with multiple certificates,2020-Q1,PO-35ad357e
+F0359,Concurrent calls to AbstractHerder::getConnector can potentially create two connector instances,2021-Q2,PO-6d79c1e7
+F0360,One StopReplicaRequest will caused two Responses,2017-Q2,PO-49adb475
+F0361,Generate docs for Connect REST API,2022-Q1,PO-15f6a7fd
+F0362,Reduce logging verbosity on ConsumerGroupHeartbeat path,2024-Q3,PO-df02ab76
+F0363,log layer exception during shutdown that caused an unclean shutdown,2021-Q3,PO-5a07e7ad
+F0364,suppress the warnings from RemoteLogManager,2024-Q2,PO-0f38fd0c
+F0365,topics tool should allow users to alter topic configuration,2015-Q3,PO-ac61a1f8
+F0366,Move AbstractIndex to storage module,2022-Q4,PO-5eea6bab
+F0367,"DefaultStreamPartitioner may get ""stuck"" to one partition for unkeyed messages",2022-Q2,PO-705031d7
+F0368,Replace barrage of bin/*.sh with single cli wrapper,2014-Q3,PO-ddd0652d
+F0369,The refresh_collaborators.py script messes .asf.yaml,2025-Q1,PO-15f6a7fd
+F0370,broker can return incorrect version of fetch response when the broker hits an unknown exception,2016-Q1,PO-f20021c1
+F0371,Replace numerical compression codes in config with something human readable,2012-Q2,PO-386b4d73
+F0372,Infinite recursive function call occurs when ConsumerRebalanceCallback.onPartitionRevoked() calls commitSync(),2015-Q3,PO-2acdaa64
+F0373,Sink Connectors can't handle topic list with whitespaces,2019-Q4,PO-0b7d57f4
+F0374,"On startup, a brokers highwatermark for every topic partition gets reset to zero",2013-Q1,PO-e69cba1a
+F0375,Mirror maker hangs indefinitely due to commit,2016-Q1,PO-dce8b80d
+F0376,Add additional configuration to control MirrorMaker 2 internal topics naming convention,2020-Q4,PO-250cabe0
+F0377,provide logStartOffset in addition to LogEndOffset metric,2014-Q2,PO-e5ea761b
+F0378,Optimize deserializers and HeadersBytesStore,2026-Q1,PO-0cd6dd3b
+F0379,Reflection in OffsetIndex and TimeIndex construction,2018-Q1,PO-72c81697
+F0380,User constructed RocksObjects leak memory,2019-Q2,PO-7ffc6d97
+F0381,Truncate warn message logged after truncating partitions,2015-Q4,PO-0cbd9297
+F0382,Flaky test report includes disabled or removed tests,2024-Q4,PO-7c118b1b
+F0383,Move ClientIdAndBroker to server-common module,2024-Q3,PO-33cd96f1
+F0384,Improve/Fix java docs,2026-Q2,PO-0cd6dd3b
+F0385,Change default client-id in consumer / producer to be more meaningful,2019-Q4,PO-04696294
+F0386,ConsoleConsumer - Option to clean zk consumer path,2014-Q2,PO-1faeb23b
+F0387,System Test Failure: MessageFormatChangeTest.testCompatibilty,2019-Q4,PO-78deacf0
+F0388,Improve accuracy of ProducerPerformance target throughput,2014-Q4,PO-d8e11ced
+F0389,Streams should not re-throw if suspending/closing tasks fails,2017-Q2,PO-3f69e406
+F0390,Provide a default producer for receiving messages from STDIN,2011-Q3,PO-efdd2621
+F0391,KafkaProducer's TransactionManager needs a review on synchronization,2017-Q2,PO-9442a033
+F0392,No tasks created for a connector,2020-Q1,PO-941f3edd
+F0393,Application Reset Tool does not need to seek for internal topics,2017-Q2,PO-3f69e406
+F0394,Remove ZkFinalizedFeatureCache and StateChangeFailedException,2025-Q1,PO-3655d819
+F0395,Guard race conditions in TopologyBuilder,2016-Q2,PO-04696294
+F0396,IQv2: Remove swapResult from the public API,2021-Q4,PO-69d38292
+F0397,Add the compression ratio metrics in the new producer,2014-Q2,PO-04696294
+F0398,Override commit message title in kafka-merge-pr.py,2015-Q3,PO-04696294
+F0399,Upgrade RocksDB to 6.27.3,2022-Q1,PO-51be622c
+F0400,Add version parameter to command line help outputs & docs,2019-Q1,PO-c4c34017
+F0401,Migrate Build Scan publication to develocity.apache.org,2025-Q1,PO-5c3e5407
+F0402,[ -25032] introduced by rocksdbjni:6.29.4.1,2022-Q4,PO-212755ff
+F0403,Add slf4j logging to new producer,2014-Q1,PO-386b4d73
+F0404,Line numbers on log messages are incorrect,2017-Q4,PO-a148a91d
+F0405,Consumer doesn't receive all data if there are multiple segment files,2012-Q2,PO-2b1766e1
+F0406,Small JavaDoc fix for AdminClient#describeTopics,2017-Q2,PO-a148a91d
+F0407,Messages sometimes not delivered by new consumer after Kafka restart,2015-Q4,PO-d7cd0516
+F0408,Kafka Streams Maven Archetype quickstart fails to compile out of the box,2019-Q1,PO-84bad19e
+F0409,Lock contention in Purgatory,2018-Q1,PO-51814ba1
+F0410,Make backoff time during consumer rebalance configurable,2012-Q1,PO-f20021c1
+F0411,Use zero loss settings for producer in Kafka Connect,2015-Q4,PO-d8e11ced
+F0412,non-dynamic props gets corrupted due to circular reference between DynamicBrokerConfig and DynamicConfig,2024-Q2,PO-0f38fd0c
+F0413,Compiler Warning,2019-Q3,PO-3f69e406
+F0414,Very long error message on the producer during produce requests failures,2013-Q1,PO-3dec1778
+F0415,improve producer under example package,2023-Q1,PO-eff4858a
+F0416,Remove kafka.cluster.Broker and BrokerEndPointNotAvailableException,2025-Q1,PO-0f38fd0c
+F0417,Console consumer offset commit regression,2017-Q2,PO-bbda4173
+F0418,Standalone Connect workers should not require connector configs to start,2022-Q1,PO-35ad357e
+F0419,Useless import class,2024-Q2,PO-c1070d46
+F0420,Add toString() method to kafka connect Field class,2018-Q1,PO-0f451264
+F0421,Document that doSend can be blocking,2021-Q3,PO-3589600c
+F0422,DumpLogSegments cannot print data from offsets topic,2016-Q3,PO-d8e11ced
+F0423,Annoying braces showed on log.error using streams,2017-Q2,PO-ffb5efa9
+F0424,Remove Deprecated variable StreamsConfig#TOPOLOGY_OPTIMIZATION,2024-Q1,PO-3f69e406
+F0425,New producer hangs in a loop detecting metadata for auto created topics,2014-Q1,PO-3dec1778
+F0426,remove findNextFetchOffset.set(true) from acknowledge and release acquired records functionality,2025-Q3,PO-2d274fe7
+F0427,Move check for super user in SimpleAclProvider before ACL evaluation,2018-Q1,PO-c4c34017
+F0428,RocksDb might stall in environments with 1 core only,2017-Q2,PO-5defa9f9
+F0429,Document Kafka Connect's log level REST APIs added in,2023-Q2,PO-7f51173e
+F0430,Optimise the handler methods in ShareConsumeRequestManager,2024-Q3,PO-028ef4c4
+F0431,Fix version of MirrorMaker2 connectors,2021-Q3,PO-15f6a7fd
+F0432,Kafka mirror (corp replica): auto-discovery of topics,2011-Q3,PO-fe6accac
+F0433,Set more conservative default values on RocksDB for memory usage,2016-Q4,PO-04696294
+F0434,Preparation for updating the default partition assignment strategy of Mirror Maker to round robin,2016-Q2,PO-0dd67898
+F0435,Due to OS caching Kafka might loose offset files which causes full reset of data,2014-Q3,PO-cbf8691f
+F0436,SafeObjectInputStream uses denylist based approach,2026-Q2,PO-cf9a4c4e
+F0437,Streams producer `client.id` are not unique for EOS,2017-Q2,PO-3f69e406
+F0438,Remove broker-list in GetOffsetShell,2024-Q3,PO-ff69b1a5
+F0439,Fix FetchResponse#responseData: Assignment of lazy-initialized members should be the last step with double-checked locking,2022-Q1,PO-a3a5ef6a
+F0440,Default SSL keystore and truststore config are unusable,2015-Q4,PO-d7cd0516
+F0441,DumpLogSegments tool should print absolute file name to report inconsistencies,2013-Q4,PO-376e37ae
+F0442,File system errors are not detected unless Kafka tries to write,2015-Q1,PO-04696294
+F0443,ClientQuotaManager.getOrCreateQuotaSensors() may return a null ClientSensors.throttleTimeSensor,2016-Q1,PO-f20021c1
+F0444,In MirrorSourceConnector replace two-step assignment with single call,2020-Q2,PO-5f127d7a
+F0445,system test testcase_0122 under replication fails due to large # of data loss,2012-Q4,PO-f20021c1
+F0446,Ensure we capture all flaky/failing tests in report,2025-Q1,PO-7c118b1b
+F0447,Add more info in output of DumpLogSegments,2011-Q3,PO-f20021c1
+F0448,Add javadoc to org.apache.kafka.clients.producer,2026-Q1,PO-3655d819
+F0449,Improve documentation of ssl.keystore.type and ssl.truststore.type,2022-Q2,PO-ba0377b6
+F0450,Improve error message in the producer when sending data to a partition without an active leader,2013-Q1,PO-3dec1778
