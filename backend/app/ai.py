@@ -78,6 +78,16 @@ SIMILARITY_THRESHOLD = 0.25
 # ordering is not robust to small wording differences.
 STALE_MARGIN = 0.05
 
+# A verdict also needs the test to resemble at least ONE of the two wordings.
+# Measured on this dataset, 48% of stale checks had both similarities below
+# 0.15 -- cases like 0.109 against 0.103, where the test barely matches either
+# version and the ordering between them is noise rather than evidence. Calling
+# such a link outdated because one near-zero number exceeds another would not
+# survive scrutiny, so these are reported as not assessable instead. This is a
+# limitation of comparing requirement prose against test method names, which
+# are different registers of text, and it belongs in the thesis as one.
+STALE_MIN_SIMILARITY = 0.15
+
 _CAMEL = re.compile(r"(?<=[a-z0-9])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])")
 
 
@@ -253,6 +263,28 @@ def detect_stale_links(db: Session, feature_id: str = None):
         is_stale = sim_to_old > sim_to_new
         margin = abs(sim_to_old - sim_to_new)
         borderline = margin < STALE_MARGIN
+        assessable = max(sim_to_old, sim_to_new) >= STALE_MIN_SIMILARITY
+
+        if not assessable:
+            results.append({
+                "ac_id": hist.ac_id,
+                "feature_id": hist.feature_id,
+                "tc_id": tc.tc_id,
+                "old_requirement_text": hist.old_text,
+                "new_requirement_text": hist.new_text,
+                "similarity_to_old": round(sim_to_old, 3),
+                "similarity_to_new": round(sim_to_new, 3),
+                "margin": round(margin, 3),
+                "confidence": "none",
+                "status": "Cannot assess",
+                "detail": (
+                    f"Test case {tc.tc_id} resembles neither wording closely "
+                    f"({sim_to_old:.2f} against the previous text, {sim_to_new:.2f} "
+                    f"against the current one). Whichever is larger, the difference "
+                    f"is not evidence. No verdict is offered."
+                ),
+            })
+            continue
 
         if is_stale:
             detail = (
@@ -292,4 +324,118 @@ def run_full_assessment(db: Session, feature_id: str = None):
     return {
         "missing_link_inferences": infer_missing_links(db, feature_id),
         "stale_link_detections": detect_stale_links(db, feature_id),
+    }
+
+
+# ---------------------------------------------------------------------------
+# Evaluation session set
+# ---------------------------------------------------------------------------
+# A full assessment of this dataset produces over 400 flags. No participant
+# reviews 400 items in a 45-minute session, and the ones reviewed late would be
+# poorer data than the ones reviewed first.
+#
+# This selects a fixed set of about 20, chosen to span the range of confidence
+# rather than sampled at random, and weighted towards the cases where
+# practitioners are most likely to disagree with each other -- which is what
+# RQ4 is actually about. The borderline stale links, where the two similarity
+# scores differ by less than STALE_MARGIN, are the most valuable items here:
+# the tool's verdict rests on an ordering that is not robust, so what a
+# participant does with them is informative either way.
+#
+# The selection is deterministic. Every participant sees the same items in the
+# same order, so their reasoning can be compared case by case.
+
+SESSION_STRATA = [
+    # (kind, label, how many)
+    ("stale",   "borderline",      4),   # margin < STALE_MARGIN -- disagreement expected
+    ("stale",   "clearly_outdated", 3),
+    ("stale",   "clearly_current",  2),
+    ("stale",   "cannot_assess",    1),   # does the participant agree it is unanswerable?
+    ("missing", "uncertain",        5),   # similarity 0.25-0.40
+    ("missing", "confident",        2),   # similarity >= 0.40
+    ("missing", "near_miss",        3),   # best match just under the threshold
+]
+
+
+def _spread(items, n):
+    """Take n items spread evenly across the list, not the first n."""
+    if n <= 0 or not items:
+        return []
+    if len(items) <= n:
+        return list(items)
+    step = len(items) / n
+    return [items[int(i * step)] for i in range(n)]
+
+
+def build_session_set(db: Session, feature_id: str = None):
+    """Return the curated set of flags to put in front of a participant."""
+    stale = detect_stale_links(db, feature_id)
+    missing = infer_missing_links(db, feature_id)
+
+    # sort every pool by id first so the selection cannot depend on row order
+    stale.sort(key=lambda r: r["ac_id"])
+    missing.sort(key=lambda r: r["ac_id"])
+
+    pools = {
+        ("stale", "borderline"): [
+            r for r in stale if r["confidence"] == "low"
+        ],
+        ("stale", "clearly_outdated"): [
+            r for r in stale
+            if r["confidence"] == "normal" and r["status"] == "Explicit, outdated"
+        ],
+        ("stale", "clearly_current"): [
+            r for r in stale
+            if r["confidence"] == "normal" and r["status"] == "Explicit, current"
+        ],
+        ("stale", "cannot_assess"): [
+            r for r in stale if r["status"] == "Cannot assess"
+        ],
+        ("missing", "uncertain"): [
+            r for r in missing
+            if r["proposed_tc_id"] and 0.25 <= r["similarity_score"] < 0.40
+        ],
+        ("missing", "confident"): [
+            r for r in missing
+            if r["proposed_tc_id"] and r["similarity_score"] >= 0.40
+        ],
+        ("missing", "near_miss"): [
+            r for r in missing
+            if not r["proposed_tc_id"]
+            and r["similarity_score"] is not None
+            and 0.15 <= r["similarity_score"] < SIMILARITY_THRESHOLD
+        ],
+    }
+
+    items, composition = [], {}
+    for kind, label, want in SESSION_STRATA:
+        chosen = _spread(pools[(kind, label)], want)
+        composition[label] = {"available": len(pools[(kind, label)]),
+                              "selected": len(chosen)}
+        for r in chosen:
+            items.append({
+                "kind": kind,
+                "stratum": label,
+                "ac_id": r["ac_id"],
+                "feature_id": r["feature_id"],
+                "payload": r,
+            })
+
+    # interleave the two kinds so a participant is not given ten of one and
+    # then ten of the other, which would invite a single repeated judgement
+    st = [i for i in items if i["kind"] == "stale"]
+    mi = [i for i in items if i["kind"] == "missing"]
+    ordered = []
+    while st or mi:
+        if st:
+            ordered.append(st.pop(0))
+        if mi:
+            ordered.append(mi.pop(0))
+    for n, item in enumerate(ordered, 1):
+        item["position"] = n
+
+    return {
+        "total": len(ordered),
+        "composition": composition,
+        "items": ordered,
     }
